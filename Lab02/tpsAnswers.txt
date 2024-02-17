@@ -1,0 +1,63 @@
+Lab 02 - Siddharth Krishna
+
+TPS ACTIVITY 1: 
+
+1. Garret Castro 
+
+Krishna Velicheti 
+
+Siddharth Krishna 
+
+2.  https://www.howtogeek.com/devops/debugging-with-gdb-getting-started/ 
+
+https://www.gdbtutorial.com/tutorial/how-install-gdb 
+
+https://www.learninglad.com/2021/01/how-to-download-and-install-c-cpp-toolset-mingw64-gcc-msys2.html 
+
+3. Shared tutorials with Partners 
+
+4. Bookmarked results 
+
+---------------------------------------------------------------------------------- 
+
+TPS ACTIVITY 2: 
+
+1.gcc -g punishment.c  
+
+2.gdb punish 
+
+3.“run” or “r’ 
+
+4. Breakpoints are set lines in your program where the GDB pauses.  This way you can check values and such. To set a breakpoint, we type “break <filename>: <linenumber.”  
+
+5. Step 
+
+6. printf() 
+
+7. Continue 
+
+7. “q” or “quit” 
+
+---------------------------------------------------------------------------------- 
+
+TPS ACTIVITY 3: 
+
+1. 4 Variables were declared. Two of them are pointers and they are px and py. 
+
+2. The values will be garbage values 
+
+3. To prevent them from having unexpected values, they need to be initialized right away. 
+
+4. To get the addresses of x and y, use the keywords &x and &y  
+
+5.Int *px = &x; int *py = &y; 
+
+6.For (int i = 0; i < 10; i++)  { 
+
+		printf(“%d”, *(arr+i)); 
+
+ 7.Printf(“%d”, &arr[0]) 
+
+     a. Printf(“%d”, &arr); 
+
+8.The result makes sense because the name arr points to the front of the array, and arr[0] is at the front of the array 

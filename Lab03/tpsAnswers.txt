@@ -1,0 +1,33 @@
+Siddharth Krishna
+Garret Castro
+Krishna Velicheti
+
+TPS Activity 1: 
+
+1) Static Pool: Storing global and static variables. 
+
+Stack: Storing local variables (declared in functions)  
+
+Heap: Stores dynamic memory allocation (memory declared via malloc())
+
+2) 
+a. 3 variables declared
+b. 2 of the variables are pointers:
+   ptr points to integer
+   handle points to an integer pointer
+c. num is on the stack because it is an immediately initialized variable
+   ptr and handle are on the heap because the space for their data is malloc-allocated
+d. it will be the heap
+
+3) DONE 
+
+4) DONE
+
+TPS Activity 2:
+
+1) DONE 
+
+2) DONE
+
+3) The head pointer points to the first node, which consecutively has the other variables right after it.
+   The head is directly related to the node, no extra complications.

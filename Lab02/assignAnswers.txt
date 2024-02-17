@@ -1,0 +1,19 @@
+--------------------------------------
+Assignment 1 Answers
+
+1. The line that has potentally caused the segmentation fault is line 18.
+
+2. I can fix the line so it works properly by changing scanf("%d", input); to scanf("%d", &input);. 
+
+3. The bug here is that sum is being passed by value to read_values which is preventing updates that are within read_values from ebing able to affect the sum in main. There is also another issue with program resulting in an Avnerage:nan output which shows that there is an issue with the division by zero since values remain 0, which means the counting or input being processed has an issue.
+
+4. To fix the issue, we need to change read_values to be able to accept a pointer to sum and also adjust the code to modify sum through the pointer using *sum +=input. We also need to make sure that values correctly counts the number of valid inputs that are processed by the loop.
+
+-----------------------------------
+Assignment 2 Answers
+
+1. Yes, the output "HELLO!hello!" is expected since the program correctly appends "hello!" to "HELLO!".
+
+2. No, the output "HI!hi!hello!" is not expected. It seems that the bug is that the program is not able to clear str1 after each concating that causes the previous text to accumulate.
+
+3. The output wasn't fully expected since I was combining the length of str1 and str2 which basically exceeds the allocated size for memory. This happens since it doesn't check or adjusts the length of the concatenated strings based on allocated size buffering causing memory bugs.
