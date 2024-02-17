@@ -31,3 +31,5 @@ TPS Activity 2:
 
 3) The head pointer points to the first node, which consecutively has the other variables right after it.
    The head is directly related to the node, no extra complications.
+
+-----------------------------
