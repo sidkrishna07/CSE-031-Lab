@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <malloc.h>
+
+//#include <malloc.h>  REMOVED CAUSES ERROR WHEN RUNNING PROGRAM
 
 int* bubbleSort(int arr[], int n) {
     int temp, i = 0, j = 0;
