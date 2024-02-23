@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+// #include <malloc.h> COMMENTED CAUSES ERRORS
 
  int main() {
 	int num;
@@ -14,12 +14,11 @@
 	*handle = ptr;
 
 // Insert code here
-	printf("%lu\n", num);
-	printf("%lu\n", ptr);
-	printf("%lu\n", handle);
-	printf("%lu\n", &num);
-	printf("%lu\n", &ptr);
-	printf("%lu\n", &handle);
-	
+	printf("%p\n", (void*)&num);
+	printf("%p\n", (void*)ptr);
+	printf("%p\n", (void*)handle);
+	printf("%p\n", (void*)&ptr);
+	printf("%p\n", (void*)&handle);
+
 	return 0;
 } 

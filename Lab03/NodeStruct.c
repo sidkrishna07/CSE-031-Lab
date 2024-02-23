@@ -14,13 +14,13 @@ int main() {
     head->fValue = 3.14;
 	
 	// Insert code here
-    printf("%d\n", *head);
-    printf("%d\n", head->iValue);
-    printf("%f\n", head->fValue);
-    printf("%p\n", &head);
-    printf("%p\n", &head->iValue);
-    printf("%p\n", &head->fValue);
-    printf("%p\n", &head->next);
+    printf("head points to: %p\n", (void*)head);
+    printf("iValue: %d\n", head->iValue);
+    printf("fValue: %f\n", head->fValue);
+    printf("Address of head (pointer itself): %p\n", (void*)&head);
+    printf("Address of iValue: %p\n", (void*)&head->iValue);
+    printf("Address of fValue: %p\n", (void*)&head->fValue);
+    printf("Address of next: %p\n", (void*)&head->next);
 	
 	return 0;
 }
