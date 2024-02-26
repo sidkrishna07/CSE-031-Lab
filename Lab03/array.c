@@ -24,7 +24,8 @@ int* bubbleSort(int arr[], int n) {
     }
     */
 
-    // Sorting using pointer notations. i.e. you cannot use "[]"
+    // MODIFIED CODE HERE //
+    //ONLY DIFFERENCE TO THE CODE ABOVE IS POINTERS ADDED WITH * SIGN//
     for (i = 0; i < n - 1; i++) {
         for(j = 0; j < n - 1; j++) {
             if(*(s_arr + j) > *(s_arr + j + 1)) {

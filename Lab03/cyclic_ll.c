@@ -6,7 +6,7 @@ typedef struct node {
 } node;
 
 
-//CHANGES MADE FROM HERE//
+//CHANGES MADE TO CODE FROM HERE//
 
 int has_cycle(node *head) {
   if (head == NULL || head->next == NULL) {
