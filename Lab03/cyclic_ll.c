@@ -28,7 +28,7 @@ int has_cycle(node *head) {
   return 0; 
 }
 
-// END OF CHANGES MADE//
+// END OF CHANGES MADE TO CODE//
 
 
 void test_has_cycle(void) {
