@@ -24,6 +24,9 @@ int* bubbleSort(int arr[], int n) {
     }
     */
 
+
+
+
     // MODIFIED CODE HERE //
     //ONLY DIFFERENCE TO THE CODE ABOVE IS POINTERS ADDED WITH * SIGN//
     for (i = 0; i < n - 1; i++) {
@@ -38,6 +41,14 @@ int* bubbleSort(int arr[], int n) {
 
     return s_arr;
 }
+
+// END OF CODE CHANGES HERE//
+
+
+
+
+
+
 
 void printArray(int arr[], int n) {
     int i = 0;
