@@ -1,0 +1,54 @@
+Garret Castro
+Siddharth Krishna
+
+TPS 1
+
+1. We expect the program to print 2, as all values are assigned to decmial 2, and 2 in decimal is the same as 2 in Hex.
+2. I expect it to print 2, because it seems all the values were intialized to 2.
+3. Done
+
+4. 
+
+2
+44434241
+2
+
+
+5.
+a) 1 array was allocated, and 2 array variable names 
+b)Yes it is pointing to the same location. 
+c) DONE VERIFIED
+
+6. The difference in addresses between the two consecutive elements is that, although they start at the same address, the char array is only increasing by 1 byte per new element, while the int array
+increases by 4.
+
+7. DRAWN DIGITALY
+
+8. The difference in address between the two consecutive elements is that there is 1 byte for char types and usually 4 bytes for int types which reflects size of each type and how its stored in the memory.
+
+9. DRAWN DIGITALLY
+
+10. I observed that incrementing the index of an array moves the pointer by the size of the array's element so it is able to access the memory with consecutive elements.
+
+-----------------------------
+
+TPS 2
+
+1. Line #8 reserves space equal to n int pointers, then casts the space to int*-sized chunks
+
+
+2. We acess the ith value of the array by using the syntax arr[i].
+
+3. Done
+
+4. We need to pass the size as an argument since the function needs to know the dimensions of the 2d array to be able to iterate over the elements because arrays do not store their own size, and the size of the subarrays of 2d arrays can be ambiguous.
+
+
+5. Done
+
+
+6. Done
+
+
+7. Done
+
