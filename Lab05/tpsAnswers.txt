@@ -1,0 +1,31 @@
+Lab 05: Intro to MIPS
+Siddharth Krishna
+Garret Castro
+Krishna Velicheti
+
+TPS 1
+1. MARS stands for MIPS Assembler and Runtime Simulator
+2. Done
+3. Done
+4. Done
+5.
+a. You can load an assembly file by going to the file menu and hit open with the file containing .asm and open it.
+b. You can compile the program by clicking on the run menu and click assemble on the dropdown menu.
+c. You can run the assembled program by clicking on the run menu and pressing go to run it. 
+d. No, you can’t run the program before assembling it in MARS since it needs to convert assembly code to machine cod.e 
+e. If you want to run the assembled program line by line then you have to click on the run menu and then choose step or click F7 key.
+f. You can run the program after it finished running by making sure the program is assembled and then clicking on run and then go to start executing the program from the beginning. 
+6. Done
+
+
+TPS 2
+1.	.data = stores the items that are in the segment at the next address that it finds
+.word = stores the listed values on word boundary into the 32-bit words 
+.text = contains actual code or instructions for the program 
+2.	Line 10 is responsible for loading a word from memory into registrar $t3.
+3.	Line 15 is responsible for subtracting 1 from the value in $t3 and storing the result back into it and is part of a loop that decrements a counter used for calculating the Fibonacci number. 
+4.	After assembling, use the checkbox next to each instruction in the Execute menu to set breakpoints.
+5.	¬To continue executing the code after hitting breakpoint, you need to click run continue or the toolbar button. If you want to step through the code, you can use run and then step or F7.
+6.	You can find the content of a registrar by looking at the Registrars window to find the current values of all registrars. To modify the value of a registrar manually while running the program would be done by clicking on the register in the Registers window and then typing the new value and pressing enter.
+7.	The address at which n is stored in memory will be starting at address 0x10010000. To calculate the 13th fib number by modifying this memory location would be done by modifying the value at the memory location to the Fibonacci index you want before running the program.
+8.	Syscall is used for having system calls that are responsible for the input and output operations. Before the syscall, you need to set the register $v0 to a value that is corresponding to a desired system call. Line 19 is responsible for setting $v0 to 1 which is a print integer syscall that uses $a0 for telling the integer to print the number. Line 21 helps with setting $v0 to 10 and this is an exit syscall that is happening. 
