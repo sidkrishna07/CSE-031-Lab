@@ -28,4 +28,9 @@ main:
     # $t7 = $t6 + 12
     addi $t7, $t6, 12
     
-    j main
+    #End of program
+    #Exit the program
+    
+    li $v0, 10 #syscall code 10 to exit the program
+   
+    syscall # execute syscall
