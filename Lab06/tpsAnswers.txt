@@ -1,0 +1,55 @@
+Lab 06: Intro to MIPS
+Siddharth Krishna
+Garret Castro
+Krishna Velicheti
+
+TPS 1
+1.	Text Segment: 0x00400000, Data Segment: 0x10010000
+2.	It seems to be that basic side shows the true instructions only while the source seems to have pseudo instructions. Source is lines of written code while the basic is where each instruction is doing. 
+3.	Convert address address to real numbers , 4 bytes which are 32 bits each
+4.	8 columns
+5.	Each column being 4 bits
+6.	M:       .word 20
+7.	0x10010004
+8.	str1: .asciiz "I love CSE31!"
+9.	0x10010008 - 0x10010014
+10.	Yes
+11.	la $a0, str1
+ li $v0, 4
+ syscall
+12.	 It will load address of n into $t3
+
+
+TPS 2
+1.	In programming CPU instructions, the goal is to minimize the instruction count (for spatial/thermodynamic purposes), so using fewer instructions to represent these comparisons is better.
+
+2.	n: .word 25
+
+
+3.	str1: .asciiz "Less than\n"
+str2: .asciiz "Less than or equal to\n"
+str3: .asciiz "Greater than\n"
+str4: .asciiz "Greater than or equal to\n"
+
+4.	    li $v0, 5 # syscall for read_int
+   syscall
+   move $t0, $v0 
+
+5.	slt $t2, $t0, $t1 # If input< n, e $t2 to 1
+bne $t2, $zero, LessThan
+
+6.	st$t2, $t1, $t0 # If n < input, set $t2 to 1
+beq $t2, $zero, GreaterThanOrEqual
+
+7.	slt $t2, $t1, $t0 # If n < input, set $t2 to 1 (input > n)
+beq $t2, $zero, L1
+li $v0, 4
+la $a0, str3
+syscall
+
+8.	slt $t2, $t0, $t1 # If input < n, set $t2 to 1
+bne $t2, $zero, L2
+li $v0, 4
+la $a0, str4
+syscall
+
