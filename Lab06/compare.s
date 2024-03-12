@@ -1,5 +1,5 @@
 
-# Step 2: Declare a variable n and set it to 25
+#2: Declare a variable n and set it to 25
 .data
 
 n: .word 25
