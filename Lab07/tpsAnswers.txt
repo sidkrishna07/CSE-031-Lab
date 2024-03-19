@@ -1,0 +1,46 @@
+Lab 07: Procedures in MIPS
+Siddharth Krishna
+Garret Castro
+Krishna Velicheti
+
+TPS 1
+1.	Functions are tools, generally focused on manipulating input and output
+a.	Procedures are similar but tend to manipulate things outside of the input, known as having side effects
+b.	Methods are procedures or functions that belong to objects; they tend to manipulate the object they belong to
+2.	No action needed.
+3.	
+#include <stdio.h>
+
+int main() {
+    int m = 10;
+    int n = 5;
+    int result;
+
+    // Equivalent of SUM function in MIPS
+    result = m + n;
+
+    // Equivalent of printing out the result in MIPS
+    printf("%d\n", result);
+
+    return 0;
+}
+
+4.	Line 12 is used for instructions to be able to jump to line 20. Line 20 is responsible for adding the registers $a0 and $a1 and loads the value into $v0.
+5.	Yes, we can use j. We can create a label. It may not be as efficient.
+6.	Address is very long…may cause some problems.
+7.	We get error. “Invalid compile...”
+8.	0x00400020
+9.	It should be correct
+a.	For Garret’s computer, the address changed to 0x00400028 when he reassembled it with the 0x00400020 value. He changed it to the new address and it worked.
+10.	return address: 0x00400028 and 15 as output
+11.	jal
+12.	DONE (replaced “j SUM” with “jal SUM” on line 12)
+
+
+TPS 2
+1.	The output we guessed was 38. We checked and this was correct.
+2.	Code should output the same result given the same input. The functions are defined below MAIN (SUB and SUM functions.)
+3.	SUM knows where to return to because the correct return address to MAIN is automatically stored in $ra via the `jal` instruction. After SUM jumps to SUB, a new value is written to $ra to remember the correct address in SUM return address to MAIN is overwritten and lost.
+4.	The original value gets overwritten. This is a problem because we lost the original input value. We should also store the original arguments in a stack using the stack pointer $sp.
+5.	Just like the previous, $s0 gets lost and we should store it in the stack to save it
+6.	DONE (in file)
