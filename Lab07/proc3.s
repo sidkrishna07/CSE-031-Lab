@@ -1,82 +1,90 @@
 .data
-output_msg: .asciiz "p + q: "
-final_output_msg: .asciiz "Final z value: "
-newline: .asciiz "\n"
+out_text: .asciiz "p + q: "  # Text to print before the result
+newline: .asciiz "\n"        # Newline character for formatting output
 
-    .text
-    .globl main
-
-# Main function starts here
-main:
-    # Prepare arguments for foo
-    li $a0, 2              # m = 2
-    li $a1, 4              # n = 4
-    li $a2, 6              # o = 6
-
-    # Call foo
-    jal foo                # foo(2, 4, 6)
-
-    # Calculate final value of z and store in $s0
-    add $s0, $v0, $a0      # z = return value from foo + x
-    add $s0, $s0, $a1      # z += y
-    add $s0, $s0, $a2      # z += z
-
-    # Print final z value
-    li $v0, 4              # syscall for print string
-    la $a0, final_output_msg
+.text
+# Entry point of the program
+MAIN:   
+    li $s0, 2                # Initialize $s0 (x) with 2
+    li $s1, 4                # Initialize $s1 (y) with 4
+    li $s2, 6                # Initialize $s2 (z) with 6
+    
+    # Prepare arguments for foo by moving them into argument registers
+    move $a0, $s0            # Move x into $a0
+    move $a1, $s1            # Move y into $a1
+    move $a2, $s2            # Move z into $a2
+    
+    jal foo                  # link to foo and calculates foo(x, y, z)
+    
+    # Add results of foo to $s2 (z)
+    add $s2, $s2, $s1
+    add $s2, $s2, $s0
+    add $s2, $s2, $v0        # $s2 = x + y + z + foo(x, y, z)
+   
+     # Print final result stored in $s2
+    move $a0, $s2            # Move result into $a0 for printing
+    li $v0, 1                # System call for print integer
     syscall
-    move $a0, $s0          # Load final z value into $a0 for printing
-    li $v0, 1              # syscall for print int
-    syscall
-    li $v0, 4              # syscall for print string
+  
+      # Print newline
+    li $v0, 4
     la $a0, newline
     syscall
-
+    
     # Exit program
-    li $v0, 10             # syscall for exit
+    li $v0, 10               # System call for exit
     syscall
-
-# Function foo starts here
-foo:
-    # Save return address
-    addi $sp, $sp, -4
-    sw $ra, 0($sp)
-
-    # First call to bar
-    add $t0, $a0, $a2      # Prepare first argument for bar
-    add $t1, $a1, $a2      # Prepare second argument for bar
-    add $t2, $a0, $a1      # Prepare third argument for bar
+    
+# foo function: Performs arithmetic operations and calls bar
+foo:    
+    addi $sp, $sp, -8        # Allocate space on stack for $ra
+    sw $ra, 0($sp)           # Save return address on stack
+    
+    # First call to bar with (m + o, n + o, m + n)
+    add $t0, $a0, $a2
+    add $t1, $a1, $a2
+    add $t2, $a0, $a1
     jal bar
-    move $s0, $v0          # Store result of first bar call in $s0 (p)
-
-    # Second call to bar
-    sub $a0, $a0, $a2      # Prepare first argument for bar
-    sub $a1, $a1, $a0      # Prepare second argument for bar
-    add $a2, $a1, $a1      # Prepare third argument for bar
+    move $t3, $v0            # Store result of first call in $t3
+  
+     # Second call to bar with (m - o, n - m, 2n)
+    sub $t0, $a0, $a2
+    sub $t1, $a1, $a0
+    add $t2, $a1, $a1
     jal bar
-    move $s1, $v0          # Store result of second bar call in $s1 (q)
-
-    # Calculate p + q
-    add $v0, $s0, $s1      # p + q
-
-    # Print "p + q: " followed by the result
-    li $v0, 4              # syscall for print string
-    la $a0, output_msg
+    add $t3, $t3, $v0        # Add result of second call to $t3
+  
+      # Print "p + q: "
+    li $v0, 4
+    la $a0, out_text
     syscall
-    move $a0, $v0          # Move sum (p + q) to $a0 for printing
-    li $v0, 1              # syscall for print int
+  
+      # Print sum of bar calls
+    move $a0, $t3
+    li $v0, 1
     syscall
-    li $v0, 4              # syscall for print string
+  
+      # Print newline
+    li $v0, 4
     la $a0, newline
     syscall
-
-    # Restore return address and return
+ 
+       # Prepare return value and restore $ra
+    move $v0, $t3
     lw $ra, 0($sp)
-    addi $sp, $sp, 4
-    jr $ra
-
-# Function bar starts here
-bar:
-    sub $v0, $a1, $a0      # b - a
-    sllv $v0, $v0, $a2     # (b - a) << c
-    jr $ra                 # Return to caller
+    addi $sp, $sp, 8         # Deallocate space from stack
+    jr $ra                   # Return to caller
+    
+# bar function: Performs (b - a) << c operation
+bar:    
+    addi $sp, $sp, -8        # Allocate space on stack for $ra
+    sw $ra, 0($sp)           # Save return address on stack
+    
+    # Perform the operation and store in $v0
+    sub $v0, $t1, $t0
+    sllv $v0, $v0, $t2       # Shift left logical variable
+   
+     # Restore $ra and return
+    lw $ra, 0($sp)
+    addi $sp, $sp, 8         # Deallocate space from stack
+    jr $ra                   # Return to caller

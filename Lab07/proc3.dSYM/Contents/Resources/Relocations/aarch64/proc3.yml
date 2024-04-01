@@ -1,0 +1,9 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/sidkrishna/Documents/College/UC Merced/CSE 031/Labs/Lab07/proc3'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _bar, symObjAddr: 0x0, symBinAddr: 0x100003E1C, symSize: 0x2C }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _bar, symObjAddr: 0x0, symBinAddr: 0x100003E1C, symSize: 0x2C }
+  - { offsetInCU: 0x85, offset: 0x85, size: 0x8, addend: 0x0, symName: _foo, symObjAddr: 0x2C, symBinAddr: 0x100003E48, symSize: 0xAC }
+  - { offsetInCU: 0xE5, offset: 0xE5, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0xD8, symBinAddr: 0x100003EF4, symSize: 0x90 }
+...
