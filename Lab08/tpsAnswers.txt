@@ -1,0 +1,47 @@
+Lab 08: More Procedures in MIPS
+Siddharth Krishna
+Garret Castro
+Krishna Velicheti
+
+TPS 1
+1-4. Done
+la $a0, <label for input prompt>
+li $v0, 4
+syscall
+li $v0, 5
+syscall
+addi $t3, $v0, 0
+5. We do not need to declare or use n
+6. Done
+
+
+-
+TPS 2
+1.	DONE
+2.	We discussed
+3.	li $v0, 4            
+la $a0, prompt      
+syscall              
+4.	    # TPS 2 #4 (read user input)
+    li $v0, 5
+    syscall
+     move $a0, $v0
+5.	Expect returned value from function stored in $vo. We could temporarily store value elsewhere like another register on stack and move it back to $vO before syscall instruction for printing.
+6.	    move $a0, $v0
+ li $v0, 1
+syscall
+
+7.	stack pointer is moved by -12, reserving space for three integer values.
+8.	li $v0, 1
+9.	li $v0, 3
+
+10. need to save $a0 into stack before recursive calls to hold current value of the argument $a0 across recursive function calls
+
+11. addi $a0, $a0, -2    
+
+12. Preventing last recursion's returned value from being overwritten by saving temporarily before next recursive call on the stack
+sw $v0, 8($sp)      
+
+13. addi $a0, $a0, -1
+14. add $v0, $v0, $t1
+15. lw $ra, 0($sp)
