@@ -5,71 +5,81 @@ result: .asciiz "\n"
 .text
 .globl main
 
+# Main Function
 main:
-    # Print prompt
-    li $v0, 4          # syscall for print string
-    la $a0, prompt     # load address of prompt into $a0
+    # Display prompt and read an integer from the user
+    li $v0, 4
+    la $a0, prompt
+    syscall
+    
+    li $v0, 5
+    syscall
+    
+    move $a0, $v0
+    
+    jal recursion
+    
+    move $a1, $v0
+    
+    # Print the result of the recursion function
+    li $v0, 1
+    move $a0, $a1
+    syscall
+    
+    # Print a newline character
+    li $v0, 4
+    la $a0, result
     syscall
 
-    # Read integer
-    li $v0, 5          # syscall for read int
-    syscall
-    move $a0, $v0      # move read integer into $a0 for recursion function
-
-    jal recursion      # call recursion function
-    move $a1, $v0      # move result of recursion into $a1
-
-    # Print result
-    li $v0, 1          # syscall for print int
-    move $a0, $a1      # move result into $a0
+    # Exit program
+    li $v0, 10
     syscall
 
-    # Print newline
-    li $v0, 4          # syscall for print string
-    la $a0, result     # load address of newline into $a0
-    syscall
-
-    # Exit
-    li $v0, 10         # syscall for exit
-    syscall
-
+# Recursion Function
 recursion:
-    # Base case 1: if m == -1
-    li $t0, -1         # load -1 into $t0
+    # Base cases: m == -1 or m <= -2
+    li $t0, -1
     beq $a0, $t0, base_case_1
-
-    # Base case 2: if m <= -2
-    li $t1, -2         # load -2 into $t1
+    
+    li $t1, -2
     ble $a0, $t1, base_case_2
 
-    # Recursive case
-    addi $sp, $sp, -8  # allocate stack space for 2 words
-    sw $ra, 4($sp)     # save return address
-    sw $a0, 0($sp)     # save argument m
-
-    addi $a0, $a0, -3  # calculate m - 3
-    jal recursion      # recursion(m - 3)
-    move $t2, $v0      # save result of recursion(m - 3) in $t2
-
-    lw $a0, 0($sp)     # restore argument m
-    addi $a0, $a0, -2  # calculate m - 2
-    jal recursion      # recursion(m - 2)
-    add $v0, $v0, $t2  # add results of recursion(m - 3) and recursion(m - 2)
-    lw $ra, 4($sp)     # restore return address
-    lw $a0, 0($sp)     # restore argument m
-    add $v0, $v0, $a0  # add m to the result
-    addi $sp, $sp, 8   # deallocate stack space
-    jr $ra             # return
+    # Recursive case: Perform the recursion with m-3 and m-2, then add results and m
+    addi $sp, $sp, -12
+    
+    sw $ra, 8($sp)
+    sw $a0, 4($sp)
+    sw $t2, 0($sp)
+    
+    addi $a0, $a0, -3
+    
+    jal recursion
+    
+    move $t2, $v0
+    lw $a0, 4($sp)
+    addi $a0, $a0, -2
+    
+    jal recursion
+    
+    add $v0, $v0, $t2
+    lw $t2, 0($sp)
+    lw $a0, 4($sp)
+    
+    add $v0, $v0, $a0
+    lw $ra, 8($sp)
+    
+    addi $sp, $sp, 12
+    jr $ra
 
 base_case_1:
-    li $v0, 3          # return 3
+    li $v0, 3
     jr $ra
 
 base_case_2:
     blt $a0, $t1, less_than_neg2
-    li $v0, 1          # return 1 for m == -2
+    li $v0, 1
     jr $ra
 
 less_than_neg2:
-    li $v0, 2          # return 2 for m < -2
+    li $v0, 2
     jr $ra
