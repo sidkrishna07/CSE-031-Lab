@@ -56,14 +56,14 @@ recursion:
     jal recursion    #recursive call with m - 3
     
     move $t2, $v0      #saving result of m - 3 recursion
-    lw $a0, 4($sp)
+    lw $a0, 4($sp)     #restoring m value
     addi $a0, $a0, -2
     
     jal recursion       #recursive call with m - 2
     
     add $v0, $v0, $t2   #adding result of m - 3 and m - 2
     lw $t2, 0($sp)
-    lw $a0, 4($sp)
+    lw $a0, 4($sp)      # m value restore
     
     add $v0, $v0, $a0    # adding m to the result of m - 3 and m - 2
     lw $ra, 8($sp)
