@@ -1,0 +1,48 @@
+Lab 09: Machine Language
+Siddharth Krishna
+Garret Castro
+Krishna Velicheti
+
+Activity 1:
+1-3. Done
+4. 32 bits
+5. There are 3 types denoted by letters: I, J, and R. I instructions use immediate values, such as `addi` and `lw` (the immediate is the offset). J instructions “jump” to different lines in the program, like `j` and `jal`. R instructions are all other kinds of instructions, and they generally use more than 2 registers. Examples of R instructions are `add` and `and`.
+
+6. 
+a. The instruction type is i-format ; 4 fields exist opcode, rs, rt, immediate
+b. 
+0x08 (opcode)
+$zero (rs)
+0x0 (rs)
+$s0 (rt)
+0x10 (rt)
+25 (decimal) - 0x19 (hex) 
+c. Hex: 0x0230402a
+Binary: 001000 00000 10000 0000000000011001
+
+7.
+a.
+Machine code address at Hex: 0x0230402a
+ Converted to binary: Binary: 000000 10001 10000 01000 00000 101010
+b. Looks like r instruction type since opcode of all r-format instruction are 0
+6 fields present in instruction type. Names: opcode, rs, rt, rd, shamt, funct
+c. opcode: 000000 (0x0). rs: 10001 (0x11)  rt: 10000 (0x10) rd: 01000 (0x8) shamt: 00000 (0x0)  funct: 101010 (0x2a) 
+d. Slt instruction done, from opcode. Funct is 0x2a so we know  then it is slt.
+e. I can confirm that it matches source column in text window. Final MIPS instruction is slt $t0, $s1, $s0.
+
+8. 
+a. Instruction Format: bne (branch if not equal)
+b. Opcode: 0x5, rt: 0x0, rs:  0x8
+c. 0x00400000 + 28 = 0x0040001C
+d. No! immediate is 16 bits and address is 32 bits
+e. Subtract address of instruction to the address of label. 
+f. Hex: 0x15000001
+     Binary: 001001 01000 0000000000001
+9. 
+a) This is a J instruction
+b) opcode (hex): 2
+c) It jumps to the label GREQ at the address 0x00400030
+d) 32 – 6 = 26
+26 bits can be used for the address field
+e. Binary Representation: 00010 000010000000000000000110000
+ 
