@@ -11,7 +11,8 @@
 - Destination Register ($s0): 10000
 - Immediate (-15): 1111111111110001 (2's complement binary for -15)
 
-**Resulting Machine Code:** 001000 00000 10000 1111111111110001
+**Resulting Machine Code:** 0010 0000 0001 0000 1111 1111 1111 0001
+**Hex:** 0x2010FFF1
 
 **MIPS Instruction Conversion:**
 - Opcode: 001000
@@ -34,14 +35,15 @@
 - Shamt: 00000
 - Function Code (slt): 101010
 
-**Resulting Machine Code:** 000000 10000 10001 01000 00000 101010
+**Resulting Machine Code:** 0000 0010 0001 0001 0100 0000 0010 1010
+**Hex:** 0x0211402A
 
 **MIPS Instruction Conversion:**
 - Opcode: 000000
 - Source Register 1: $s0
 - Source Register 2: $s1
 - Destination Register: $t0
-- Shamt: 0
+- Shamt: 00000
 - Function Code: slt
 
 **Resulting MIPS Instruction:** slt $t0, $s0, $s1
@@ -57,9 +59,11 @@
 - Destination Register ($zero): 00000
 - Current instruction address: Address of Line #16 = 0x00400014
 - Target address (LEEQ): Address of Label LEEQ = 0x00400030
-- Offset: (0x00400030 - 0x00400018) / 4 = 0x00000006
+- Offset: (0x00400030 - 0x00400014) / 4 = 0x00000006 (HEX)
+**Binary Hex for Offset:** 0000000000000110
 
-**Resulting Machine Code:** 000100 01000 00000 0000000000000110
+**Resulting Machine Code:** 0001 0001 0000 0000 0000 0000 0000 0110
+**Hex:** 0x11000006
 
 **MIPS Instruction Conversion:**
 - Opcode: 000100
@@ -78,12 +82,14 @@
 - Opcode (j): 000010
 - Target address (GRT): Address of Label GRT = 0x0040001C
 - Jump address (26 bits): 0x0040001C >> 2 = 0x00100007
+**Binary Jump Address:** 00000100000000000000000111
 
-**Resulting Machine Code:** 000010 00000000000000000000000111
+**Resulting Machine Code:** 0000 1000 0001 0000 0000 0000 0000 0111
+**HEX Machine Code:** 0x08100007
 
 **MIPS Instruction Conversion:**
 - Opcode: 000010
-- Jump address: 0x00100007
+- Target address: 0x0040001C
 
 **Resulting MIPS Instruction:** j GRT
 
