@@ -1,0 +1,86 @@
+# Individual Assignment - Siddharth Krishna
+
+------------------------------
+
+## Line #7: addi $s0, $zero, -15
+**Instruction:** Add Immediate
+
+**Machine Code Conversion:**
+- Opcode (addi): 001000
+- Source Register ($zero): 00000
+- Destination Register ($s0): 10000
+- Immediate (-15): 1111111111110001 (2's complement binary for -15)
+
+**Resulting Machine Code:** 001000 00000 10000 1111111111110001
+
+**MIPS Instruction Conversion:**
+- Opcode: 001000
+- Source Register: $zero
+- Destination Register: $s0
+- Immediate: -15
+
+**Resulting MIPS Instruction:** addi $s0, $zero, -15
+
+------------------------------
+
+## Line #14: slt $t0, $s0, $s1
+**Instruction:** Set Less Than
+
+**Machine Code Conversion:**
+- Opcode (slt): 000000
+- Source Register ($s0): 10000
+- Source Register ($s1): 10001
+- Destination Register ($t0): 01000
+- Function Code (slt): 101010
+
+**Resulting Machine Code:** 000000 10000 10001 01000 00000 101010
+
+**MIPS Instruction Conversion:**
+- Opcode: 000000
+- Source Register 1: $s0
+- Source Register 2: $s1
+- Destination Register: $t0
+- Function Code: slt
+
+**Resulting MIPS Instruction:** slt $t0, $s0, $s1
+
+---------------------------------
+
+## Line #17: beq $t0, $zero, LEEQ
+**Instruction:** Branch if Equal
+
+**Machine Code Conversion:**
+- Opcode (beq): 000100
+- Source Register ($t0): 01000
+- Destination Register ($zero): 00000
+- Current instruction address: Address of Line #17 = 0x00400068
+- Target address (LEEQ): Address of Label LEEQ = 0x00400088
+- Offset: (0x00400088 - 0x0040006C) / 4 = 0x00000005
+
+**Resulting Machine Code:** 000100 01000 00000 0000000000000101
+
+**MIPS Instruction Conversion:**
+- Opcode: 000100
+- Source Register: $t0
+- Destination Register: $zero
+- Offset: 5
+
+**Resulting MIPS Instruction:** beq $t0, $zero, LEEQ
+
+-------------------------------------------
+
+## Line #20: j GRT
+**Instruction:** Jump
+
+**Machine Code Conversion:**
+- Opcode (j): 000010
+- Target address (GRT): Address of Label GRT = 0x00400078
+- Jump address (26 bits): 0x00400078 >> 2 = 0x0010001E
+
+**Resulting Machine Code:** 000010 00000000001000000000000000
+
+**MIPS Instruction Conversion:**
+- Opcode: 000010
+- Target address: 0x0010001E
+
+**Resulting MIPS Instruction:** j GRT
