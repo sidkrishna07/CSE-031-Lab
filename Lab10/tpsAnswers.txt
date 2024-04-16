@@ -1,1 +1,40 @@
-.
+Lab 10: Cache
+Siddharth Krishna
+Garret Castro
+
+TPS Activity #1:
+1.	Since memory accessing is slow, it’s good to have a faster intermediary storage system to manage memory. This faster intermediary storage system is the cache.
+2.	UNDERSTOOD
+3.	UNDERSTOOD
+4.	We need to have 4 bits for the offset to represent the 16 bytes (4 bits of information can represent 16 values). The number of bits required for an offset is log_2 of a block size. In terms of 1 byte, it seems to be impractical because there would be a need to frequently access for being able to access small data which reduces efficiency. 
+5.	We need 6 bits when there are 64 blocks in a cache. The reason is 2^6 = 64.The number of bits which are typically required for the index is log_2 of block size.
+6.	We know the full cache because the cache consists solely of blocks, so we only need the size of the blocks and the number of blocks to determine the size of the cache.
+7.	The left-over bits that are present in the memory address are important as they help with identifying and also for finding if the contents are valid on the cache making sure that data which is retrieved from it matches the specific memory access that has been requested.
+8.	 
+a.	Main memory size = 2^memory address bit size = 2^20 bits
+b.	Offset value = number of bytes in block = 8 = 2^3, so 3 offset bits are needed
+c.	Cache size/block_size=block_count=128/8=16 blocks
+d.	16 blocks=2^4, so 4 index bits
+e.	tag size=memory_size_bits-index_bits=20-4=16 bits for the tag size
+f.	IMAGE UPLOADED
+g.	row_bits = tag_bit_size + dirty_bit_size + tag + data_block = 1 + 1 +16 + 8*8 = 82
+h.	13 tag + 1 valid + 1 dirty + (8*8) data = 79 bits per row
+
+TPS Activity #2
+1.	The disadvantage of a directly mapped cache is that it can lead to more possible cache misses as each block of main memory would only be mapped to one cache line which may cause frequent replacements.
+2.	DONE
+3.	For a cache that has 1024 blocks and an associativity of 4, you would need to have 8 index bits since the number of bits is found by log_2(# of sets) = log_2 (number of blocks/associativity).
+4.	A. with 20-bit memory address, the size of the main memory can be calculated as 2^20 bytes. This would have a memory size of 1 MB or 1,048,576 bytes.
+b. Block size is 8 bytes, number of offset bits is done by log_2 (8) which is equal to 3 bits.
+c. The total number of blocks in the cache would be 128/8 which is equal to 16 blocks
+d. There are two blocks per set. since we know 16 blocks total / 2 = 8 sets. 
+e. The number of index bits is calculated with log_2 (8), which results in  3 index bits. 
+f. The tag bits can be found by subtracting the number of index bits and offset bits from total address bits which is 20 – 3 – 3 which is equal to 4 tag bits.
+
+g.  IMAGE UPLOADED
+
+h. 
+Tag bits: 14 bits
+Valid bit: 1 bit
+Dirty bit: 1 bit (assumption)
+Data block: 8 bytes or 64 bits
