@@ -1,6 +1,6 @@
 Individual Assignment - Siddharth Krishna 
 
-1. The name of the processor selected is 13th Gen Intel(R) Core(TM) i7-13700K.
+1. The name of the processor selected is 13th Gen Intel Core i7-13700K.
 2. The CPU has three levels of cache: L1, L2, and L3. There is a separate L1 cache for data and instructions.
 3. The size of each cache level is the L1 data cache is 12 x 48 KB, L1 instruction cache is 12 x 32 KB, L2 cache is 3 x 2 MB, and the L3 cache is 30 MB.
 4. The block size (line size) for all cache levels is 64 bytes.
