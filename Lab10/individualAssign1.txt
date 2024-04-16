@@ -1,0 +1,35 @@
+Individual Assignment - Siddharth Krishna 
+
+1. The name of the processor selected is 13th Gen Intel(R) Core(TM) i7-13700K.
+2. The CPU has three levels of cache: L1, L2, and L3. There is a separate L1 cache for data and instructions.
+3. The size of each cache level is the L1 data cache is 12 x 48 KB, L1 instruction cache is 12 x 32 KB, L2 cache is 3 x 2 MB, and the L3 cache is 30 MB.
+4. The block size (line size) for all cache levels is 64 bytes.
+5. The caches are set associative as the L1 data and instruction caches are 12-way, L2 cache is 8-way, and the L3 cache is known to be 16-way associative.
+
+6. 
+
+number of index bits = approximately 10.
+number of offset bits = 6.
+number of tag bits assuming 64 bit system = approximately 48.
+
+
+The work for this is:
+
+Total cache size (L1 data cache) = 576 KB = 12*48 KB
+Cache line size (block size) = 64 bytes
+Associativity = 12
+
+
+number of sets = total cache size/cache line size * associativity = 576*1024/64*12 = 768
+
+
+Index bits = log_2 (# of sets) = log_2 (768) = 9.58 which is rounded to 10 bits
+
+offset bits = log_2 (cache line size) = log_2 (64 bytes) = 6 bits required
+
+***assuming it is 64 bit system*** tag bits = address bits  -  index bits - offset bits = 64 - 10 - 6 = 48 tag bits
+
+
+
+
+
